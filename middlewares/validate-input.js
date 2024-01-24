@@ -6,7 +6,8 @@ const validateInput = ( req = request, res = response, next ) => {
     const errors = validationResult(req);
     if( !errors.isEmpty() ){
         return res.status(405).json({
-            description: 'Invalid input'
+            description: 'Invalid input',
+            errors
         });
     }
 

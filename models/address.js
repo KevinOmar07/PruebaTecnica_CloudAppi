@@ -23,25 +23,17 @@ const Address = conexion_bd.define('address', {
     updatedAt: 'updatedDate'
 });
 
-// Address.hasOne(user, {
-//     foreignKey: {
-//         name: 'id_address'
-//     },
-// });
+Address.hasOne(user, {
+    foreignKey: {
+        name: 'id_address'
+    },
+});
 
-// user.belongsTo(Address, {
-//     foreignKey: {
-//         name: 'id_address'
-//     },
-// });
-
-Address.associate = (models) => {
-    Address.hasOne(models.user, {foreignKey:{name: 'id_address'}});
-};
-
-user.associate = (models) => {
-    user.belongsTo(models.Address, {foreignKey:{name: 'id_address'}});
-};
+user.belongsTo(Address, {
+    foreignKey: {
+        name: 'id_address'
+    },
+});
 
 module.exports = {
     Address
