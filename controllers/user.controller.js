@@ -1,9 +1,10 @@
-import { request, response } from "express"
-import { user } from "../models/user.js";
-import { Address } from "../models/address.js";
+const { request, response } = require("express");
+const { user } = require("../models/user.js");
+const { Address } = require("../models/address.js");
 
 
-export const getUsers = async(req = request, res = response) => {
+const getUsers = async(req = request, res = response) => {
+
     try {
 
         const {count, rows} = await user.findAndCountAll({
@@ -13,13 +14,16 @@ export const getUsers = async(req = request, res = response) => {
         res.json(rows);
         
     } catch (error) {
+
+        console.log(error);
+
         res.status(500).json({
             msg: "Ocurrio un error interno"
         });
     }
 }
 
-export const createUsers = async(req = request, res = response) => {
+const createUsers = async(req = request, res = response) => {
     try {
         
         const data = req.body.user;
@@ -45,7 +49,7 @@ export const createUsers = async(req = request, res = response) => {
     }
 }
 
-export const getusersById = async(req = request, res = response) => {
+const getusersById = async(req = request, res = response) => {
     try {
         
         const userId = req.params.userId;
@@ -69,7 +73,7 @@ export const getusersById = async(req = request, res = response) => {
     }
 }
 
-export const updateUsersById = async(req = request, res = response) => {
+const updateUsersById = async(req = request, res = response) => {
     try {
         
         const userId = req.params.userId;
@@ -96,7 +100,7 @@ export const updateUsersById = async(req = request, res = response) => {
     }
 }
 
-export const deleteUsersById = async(req = request, res = response) => {
+const deleteUsersById = async(req = request, res = response) => {
     try {
         
         const userId = req.params.userId;
@@ -120,3 +124,11 @@ export const deleteUsersById = async(req = request, res = response) => {
         
     }
 }
+
+module.exports = {
+    getUsers,
+    createUsers,
+    getusersById,
+    updateUsersById,
+    deleteUsersById
+};

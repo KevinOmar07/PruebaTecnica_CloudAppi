@@ -1,10 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
+const express = require('express');
+const cors = require('cors');
+const userRoutes = require('../routes/user.routes.js');
 
-import userRoutes from '../routes/user.routes.js';
+require('dotenv').config();
 
-dotenv.config();
 
 class Server {
     constructor(){
@@ -48,4 +47,4 @@ class Server {
 
 }
 
-export default Server;
+module.exports = Server;

@@ -1,7 +1,8 @@
-import { Sequelize } from "sequelize";
-import conexion_bd from "../config/db.config.js";
+const { Sequelize } = require("sequelize");
+const conexion_bd = require("../config/db.config.js");
 
-export const user = conexion_bd.define('user', {
+
+const user = conexion_bd.define('user', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -24,3 +25,7 @@ export const user = conexion_bd.define('user', {
     createdAt: 'createdDate',
     updatedAt: 'updatedDate'
 });
+
+module.exports = {
+    user
+}

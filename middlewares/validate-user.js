@@ -1,7 +1,7 @@
-import { request, response } from "express";
-import { user } from "../models/user.js";
+const { request, response } = require("express");
+const { user } = require("../models/user.js");
 
-export const userExists = async(req = request, res = response, next) => {
+const userExists = async(req = request, res = response, next) => {
 
     const userId = req.params.userId;
 
@@ -17,7 +17,7 @@ export const userExists = async(req = request, res = response, next) => {
     next();
 }
 
-export const validateUserId = (req = request, res = response, next) => {
+const validateUserId = (req = request, res = response, next) => {
     const userId = req.params.userId;
 
     const intUserId = parseInt(userId);
@@ -29,4 +29,9 @@ export const validateUserId = (req = request, res = response, next) => {
     }
 
     next();
+}
+
+module.exports = {
+    userExists,
+    validateUserId
 }

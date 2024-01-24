@@ -1,9 +1,9 @@
 
-import { Sequelize } from "sequelize";
-import conexion_bd from "../config/db.config.js";
-import { user } from "./user.js";
+const { Sequelize } = require("sequelize");
+const conexion_bd = require("../config/db.config.js");
+const { user } = require("./user.js");
 
-export const Address = conexion_bd.define('address', {
+const Address = conexion_bd.define('address', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -23,14 +23,26 @@ export const Address = conexion_bd.define('address', {
     updatedAt: 'updatedDate'
 });
 
-Address.hasOne(user, {
-    foreignKey: {
-        name: 'id_address'
-    },
-});
+// Address.hasOne(user, {
+//     foreignKey: {
+//         name: 'id_address'
+//     },
+// });
 
-user.belongsTo(Address, {
-    foreignKey: {
-        name: 'id_address'
-    },
-});
+// user.belongsTo(Address, {
+//     foreignKey: {
+//         name: 'id_address'
+//     },
+// });
+
+Address.associate = (models) => {
+    Address.hasOne(models.user, {foreignKey:{name: 'id_address'}});
+};
+
+user.associate = (models) => {
+    user.belongsTo(models.Address, {foreignKey:{name: 'id_address'}});
+};
+
+module.exports = {
+    Address
+};

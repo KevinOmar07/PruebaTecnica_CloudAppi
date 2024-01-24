@@ -1,8 +1,8 @@
-import { Router } from "express";
-import { check } from "express-validator";
-import { createUsers, deleteUsersById, getUsers, getusersById, updateUsersById } from "../controllers/user.controller.js";
-import { userExists, validateUserId } from "../middlewares/validate-user.js";
-import { validateInput } from "../middlewares/validate-input.js";
+const { Router } = require('express');
+const { check } = require('express-validator');
+const { createUsers, deleteUsersById, getUsers, getusersById, updateUsersById } = require ("../controllers/user.controller.js");
+const { userExists, validateUserId } = require ("../middlewares/validate-user.js");
+const { validateInput } = require ("../middlewares/validate-input.js");
 
 const router = Router();
 
@@ -35,4 +35,4 @@ router.delete('/deleteUsersById/:userId', [
     userExists
 ], deleteUsersById)
 
-export default router;
+module.exports = router;
