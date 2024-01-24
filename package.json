@@ -4,25 +4,12 @@
   "description": "Code Challenge Ninja",
   "main": "app.js",
   "type": "module",
-  "directories": {
-    "doc": "docs",
-    "example": "examples",
-    "test": "tests"
-  },
   "scripts": {
-    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
-    "start": "node app --omit=dev"
+    "start": "node app"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/ninjatalent-world/codes/c3285c36-81290658/c3285c36-14336.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/ninjatalent-world/codes/c3285c36-81290658/c3285c36-14336/issues"
-  },
-  "homepage": "https://gitlab.com/ninjatalent-world/codes/c3285c36-81290658/c3285c36-14336#readme",
   "dependencies": {
     "cls-hooked": "^4.2.2",
     "cors": "^2.8.5",
