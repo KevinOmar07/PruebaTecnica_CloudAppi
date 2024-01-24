@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
-    "start": "node app"
+    "start": "node app --omit=dev"
   },
   "repository": {
     "type": "git",
